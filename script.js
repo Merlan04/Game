@@ -237,6 +237,10 @@ function startGUI () {
     captureFolder.add({ fun: captureScreenshot }, 'fun').name('take screenshot');
 
 
+    if (isMobile())
+        gui.close();
+}
+
 function isMobile () {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
