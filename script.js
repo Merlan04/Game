@@ -237,6 +237,16 @@ function startGUI () {
     captureFolder.add({ fun: captureScreenshot }, 'fun').name('take screenshot');
 
 
+    let app = gui.add({ fun : () => {
+        ga('send', 'event', 'link button', 'app');
+        window.open('http://onelink.to/5b58bn');
+    } }, 'fun').name('Check out mobile app');
+    app.__li.className = 'cr function appBigFont';
+    app.__li.style.borderLeft = '3px solid #00FF7F';
+    let appIcon = document.createElement('span');
+    app.domElement.parentElement.appendChild(appIcon);
+    appIcon.className = 'icon app';
+
     if (isMobile())
         gui.close();
 }
