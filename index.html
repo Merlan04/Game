@@ -28,9 +28,7 @@
                 src: url('iconfont.ttf') format('truetype');
             }
 
-            * {
-                user-select: none;
-            }
+            * { user-select: none; }
 
             html, body {
                 overflow: hidden;
@@ -49,13 +47,8 @@
                 height: 100%;
             }
 
-            .dg {
-                opacity: 0.9;
-            }
-
-            .dg .property-name {
-                overflow: visible;
-            }
+            .dg { opacity: 0.9; }
+            .dg .property-name { overflow: visible; }
 
             .bigFont {
                 font-size: 150%;
@@ -69,14 +62,8 @@
                 background-color: #023C40;
             }
 
-            .cr.function.appBigFont .property-name {
-                float: none;
-            }
-
-            .cr.function.appBigFont .icon {
-                position: sticky;
-                bottom: 27px;
-            }
+            .cr.function.appBigFont .property-name { float: none; }
+            .cr.function.appBigFont .icon { position: sticky; bottom: 27px; }
 
             .icon {
                 font-family: 'iconfont';
@@ -89,23 +76,22 @@
             .app:before     { content: 'c'; }
             .discord:before { content: 'd'; }
 
-            /* Промо ВСЕГДА скрыто */
-            .promo {
+            /* ====== РЕКЛАМА НАВСЕГДА СКРЫТА ====== */
+            .promo,
+            .promo * {
                 display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
             }
+            /* ====================================== */
 
-            .promo-middle {
-                display: table-cell;
-                vertical-align: middle;
-            }
+            .promo-middle { display: table-cell; vertical-align: middle; }
 
             .promo-content {
-                width: 80vw;
-                height: 80vh;
-                max-width: 80vh;
-                max-height: 80vw;
-                margin: auto;
-                padding: 0;
+                width: 80vw; height: 80vh;
+                max-width: 80vh; max-height: 80vw;
+                margin: auto; padding: 0;
                 font-size: 2.8vmax;
                 font-family: Futura, "Trebuchet MS", Arial, sans-serif;
                 text-align: center;
@@ -117,38 +103,12 @@
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
             }
 
-            .promo-header {
-                height: 10%;
-                padding: 2px 16px;
-            }
-
-            .promo-close {
-                width: 10%;
-                height: 100%;
-                text-align: left;
-                float: left;
-                font-size: 1.3em;
-                cursor: pointer;
-            }
-
-            .promo-body {
-                padding: 8px 16px 16px 16px;
-                margin: auto;
-            }
-
-            .promo-body p {
-                margin-top: 0;
-                mix-blend-mode: color-dodge;
-            }
-
-            .link {
-                width: 100%;
-                display: inline-block;
-            }
-
-            .link img {
-                width: 100%;
-            }
+            .promo-header { height: 10%; padding: 2px 16px; }
+            .promo-close { width: 10%; height: 100%; text-align: left; float: left; font-size: 1.3em; cursor: pointer; }
+            .promo-body { padding: 8px 16px 16px 16px; margin: auto; }
+            .promo-body p { margin-top: 0; mix-blend-mode: color-dodge; }
+            .link { width: 100%; display: inline-block; }
+            .link img { width: 100%; }
 
             @keyframes promo-appear-animation {
                 0%   { transform: scale(2.0); opacity: 0; }
@@ -156,7 +116,7 @@
             }
         </style>
 
-        <!-- Google Analytics заглушка — нужна script.js чтобы не падал -->
+        <!-- Заглушка ga() чтобы script.js не упал -->
         <script>
             window.ga = window.ga || function() {};
         </script>
@@ -164,7 +124,8 @@
     <body>
         <canvas></canvas>
 
-        <!-- Промо блок оставлен в HTML чтобы script.js не упал, но скрыт через CSS -->
+        <!-- Блок промо ОБЯЗАН быть в HTML — script.js ищет его элементы.
+             Скрыт намертво через CSS выше, никогда не появится. -->
         <div class="promo">
             <div class="promo-middle">
                 <div class="promo-content">
@@ -174,8 +135,12 @@
                     <div class="promo-body">
                         <p>Try Fluid Simulation app!</p>
                         <div class="links-container">
-                            <a class="link" id="apple_link" target="_blank"></a>
-                            <a class="link" id="google_link" target="_blank"></a>
+                            <a class="link" id="apple_link" target="_blank">
+                                <img class="link-img" alt="Download on the App Store" src="app_badge.png"/>
+                            </a>
+                            <a class="link" id="google_link" target="_blank">
+                                <img class="link-img" alt="Get it on Google Play" src="gp_badge.png"/>
+                            </a>
                         </div>
                     </div>
                 </div>
